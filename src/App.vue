@@ -5,8 +5,26 @@
       <router-link to="/about">About</router-link>
     </nav>
     <router-view />
+    <HomeView @custom-event="onCustomEvent" />
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import HomeView from "@/views/HomeView.vue";
+
+@Component({
+  name: "App",
+  components: {
+    HomeView,
+  },
+})
+export default class App extends Vue {
+  onCustomEvent(payload: string) {
+    console.log("Custom event received with payload:", payload);
+  }
+}
+</script>
 
 <style>
 #app {
